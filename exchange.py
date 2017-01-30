@@ -109,10 +109,7 @@ def main():
                       config=config,
                       access_type=DELEGATE)
 
-    cards = []
-    for contact in account.contacts.all():
-        cards.append(to_vcard(contact))
-
+    cards = [to_vcard(contact) for contact in account.contacts.all()]
     args.outfile.write('\r\n'.join([c.serialize() for c in cards]))
 
 if __name__ == '__main__':
